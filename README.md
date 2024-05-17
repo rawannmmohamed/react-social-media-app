@@ -1,3 +1,3 @@
-# React + TypeScript + Vite
+# React + TypeScript + Tailwind css + Vite
 
 ## in progress ...
