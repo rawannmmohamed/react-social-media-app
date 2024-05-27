@@ -11,3 +11,10 @@ export const signupValidation = z.object({
     .min(8, { message: "Too short" }),
   password: z.string().min(8, { message: "Too short" }),
 });
+export const signinValidation = z.object({
+  email: z
+    .string()
+    .email({ message: "Invalid email" })
+    .min(8, { message: "Too short" }),
+  password: z.string().min(8, { message: "Too short" }),
+});
