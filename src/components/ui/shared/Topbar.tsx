@@ -2,15 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 import { useEffect } from "react";
+import { useUserContext } from "@/context/AuthContext";
 
 function Topbar() {
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const navigate = useNavigate();
+  const { user } = useUserContext();
   useEffect(() => {
     if (isSuccess) {
-      navigate('/');
+      navigate("/");
     }
-  });
+  }, [isSuccess]);
   return (
     <div className="topbar">
       <div className="flex-between py-4 px-5">
@@ -25,6 +27,12 @@ function Topbar() {
           >
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
+          <Link to={`/profile/${user.id}`} className="flex-center gap-3">
+            <img
+              src={user.imageUrl ?? "/assets/images/profile-placeholder.svg"}
+              alt="profile"
+            />
+          </Link>
         </div>
       </div>
     </div>
