@@ -10,20 +10,25 @@ function Topbar() {
   const { user } = useUserContext();
   useEffect(() => {
     if (isSuccess) {
-      navigate("/");
+      navigate("/sign-in");
     }
   }, [isSuccess]);
   return (
     <div className="topbar">
-      <div className="flex-between py-4 px-5">
+      <div className="flex-between py-4 px-5  ">
         <Link to="/" className="flex gap-3 items-center">
-          <img src="/assets/images/logo" alt="logo" width={130} height={325} />
+          <img
+            src="/assets/images/logo.svg"
+            alt="logo"
+            width={130}
+            height={325}
+          />
         </Link>
         <div className="flex gap-4">
           <Button
             variant="ghost"
             className="shad-button-ghost"
-            onClick={() => signOut}
+            onClick={() => signOut()}
           >
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
@@ -31,6 +36,7 @@ function Topbar() {
             <img
               src={user.imageUrl ?? "/assets/images/profile-placeholder.svg"}
               alt="profile"
+              className="h-8 w-8 rounded-full"
             />
           </Link>
         </div>
