@@ -18,3 +18,10 @@ export const signinValidation = z.object({
     .min(8, { message: "Too short" }),
   password: z.string().min(8, { message: "Too short" }),
 });
+
+export const PostValidation = z.object({
+  caption: z.string().min(8, { message: "Too short" }).max(2200),
+  file: z.custom<File[]>(),
+  tags: z.string(),
+  location: z.string().min(2).max(100),
+});
