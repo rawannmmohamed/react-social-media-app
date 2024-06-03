@@ -38,13 +38,7 @@ export async function saveUserToDB(user: {
       appwriteConfig.databaseId,
       appwriteConfig.userCollectionId,
       ID.unique(),
-      {
-        name: user.name,
-        accountId: user.accountId,
-        email: user.email,
-        imageUrl: user.imageUrl,
-        username: user.username,
-      }
+      user
     );
     return newUser;
   } catch (error) {
@@ -122,7 +116,7 @@ export async function createPost(post: INewPost) {
       await deleteFile(uploadedFile.$id);
       throw Error;
     }
-
+    console.log(newPost);
     return newPost;
   } catch (error) {
     console.log(error);
@@ -170,4 +164,15 @@ export async function deleteFile(fileId: string) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function getRecentPosts() {
+  const posts = await databases.listDocuments(
+    appwriteConfig.databaseId,
+    appwriteConfig.postCollectionId,
+    [Query.orderDesc("$createdAt"), Query.limit(20)]
+  );
+  if (!posts) throw Error;
+
+  return posts;
 }

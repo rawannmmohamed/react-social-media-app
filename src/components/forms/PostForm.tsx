@@ -45,7 +45,7 @@ const PostForm = ({ post }: PostFormProps) => {
       ...values,
       userId: user.id,
     });
-    if (!post) {
+    if (!newPost) {
       toast({ title: "Please try again" });
     } else {
       navigate("/");
