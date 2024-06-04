@@ -1,5 +1,5 @@
 import { INewPost, INewUser } from "@/types";
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   createPost,
   createUserAccount,
@@ -28,8 +28,9 @@ export const useSignOutAccount = () => {
   });
 };
 
-const queryClient = new QueryClient();
+
 export const useCreatePost = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (post: INewPost) => createPost(post),
     onSuccess: () => {
