@@ -151,10 +151,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
         <div className="flex gap-4 items-center justify-end">
           <Button onClick={handleDeletePost} variant="ghost">
             <img
-              src={"/assets/icons/delete.svg"}
+              src="/assets/icons/delete.svg"
               alt="delete"
               width={24}
               height={24}
+              className={`${action === "Create" && "hidden"}`}
             />
           </Button>
           <Button

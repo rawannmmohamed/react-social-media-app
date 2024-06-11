@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import { sidebarLinks } from "@/constants";
-import { INavLink } from "@/types";
 
 function LeftSidebar() {
   const { pathname } = useLocation();
@@ -28,7 +27,7 @@ function LeftSidebar() {
             height={36}
           />
         </Link>
-        <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
+        <div className="flex gap-3 items-center">
           <img
             src={user.imageUrl ?? "/assets/images/profile-placeholder.svg"}
             alt="profile"
@@ -38,7 +37,7 @@ function LeftSidebar() {
             <p className="body-bold">{user.name}</p>
             <p className="small-regular text-light-3">@{user.username}</p>
           </div>
-        </Link>
+        </div>
         <ul className="flex flex-col gap-6">
           {sidebarLinks.map((link) => {
             const isActive = pathname === link.route;

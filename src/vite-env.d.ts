@@ -9,7 +9,7 @@ interface ImportMetaEnv {
   readonly VITE_APPWRITE_STORAGE_ID: string;
   readonly VITE_APPWRITE_USERS_ID: string;
   readonly VITE_APPWRITE_POST_ID: string;
-  readonly VITE_APPWRITE_SAVES_ID: string;
+
 }
 
 interface ImportMeta {
